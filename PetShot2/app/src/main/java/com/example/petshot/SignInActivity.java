@@ -1,7 +1,15 @@
 package com.example.petshot;
 
 import androidx.appcompat.app.AppCompatActivity;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
+import java.util.HashMap;
+import java.util.Map;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +22,8 @@ public class SignInActivity extends AppCompatActivity {
     private Intent profileActivity;
     private EditText userName;
     private EditText password;
+    private String url = "http://intensif06.ensicaen.fr:8080/";
+    private StringRequest request;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

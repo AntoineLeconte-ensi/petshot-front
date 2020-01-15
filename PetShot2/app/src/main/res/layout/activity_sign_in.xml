@@ -17,12 +17,14 @@
         android:layout_marginLeft="40dp"
         android:orientation="vertical">
 
+
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center|top"
-            android:text="UserName"/>
+            android:text="Pseudo"/>
 
         <EditText
             android:id="@+id/userNameInput"
@@ -49,6 +51,7 @@
             android:maxLines="1"
             android:inputType="textPassword"
             android:gravity="center|top"/>
+
 
         <Button
             android:id="@+id/signInButton"

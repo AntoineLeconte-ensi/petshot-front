@@ -1,5 +1,6 @@
 package com.example.petshot;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +18,8 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.view.menu.MenuBuilder;
+import androidx.core.view.MenuItemCompat;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -36,6 +40,7 @@ public class FlowActivity extends AppCompatActivity {
     private ImageView imagePublication;
     private TextView textPublication;
     private String url = "http://intensif06.ensicaen.fr:8080/newfeed";
+    private Intent searchActivity;
 
 
     @Override
@@ -43,6 +48,7 @@ public class FlowActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flow);
 
+        searchActivity = new Intent(this, SearchActivity.class);
         Intent intent = getIntent();
         Toast.makeText(getApplicationContext(), intent.getStringExtra("id"), Toast.LENGTH_LONG).show();
       
@@ -103,6 +109,7 @@ public class FlowActivity extends AppCompatActivity {
     }
 
 
+    @SuppressLint("RestrictedApi")
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //ajoute les entrées de menu_test à l'ActionBar
@@ -130,6 +137,7 @@ public class FlowActivity extends AppCompatActivity {
                 startActivity(flowActivity);
                 return true;
             case R.id.action_search:
+                startActivity(searchActivity);
                 return true;
             case R.id.action_profil:
                 Intent profileActivity = new Intent(this, ProfileActivity.class);

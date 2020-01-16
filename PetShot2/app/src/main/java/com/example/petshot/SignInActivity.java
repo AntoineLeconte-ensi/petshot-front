@@ -77,6 +77,7 @@ public class SignInActivity extends AppCompatActivity {
                                 editor.putString("connectedId", response.toString());
                                 editor.apply();
                                 Toast.makeText(getApplicationContext(), "Connected", Toast.LENGTH_LONG).show();
+                                flowActivity.putExtra("id", response.toString());
                                 startActivity(flowActivity);
 
                             }

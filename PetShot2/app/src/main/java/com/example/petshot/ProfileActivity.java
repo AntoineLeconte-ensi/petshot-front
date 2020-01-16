@@ -1,10 +1,15 @@
 package com.example.petshot;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.*;
+
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -32,10 +37,12 @@ public class ProfileActivity extends AppCompatActivity {
     private ImageView userStatistics;
     private Button followButton;
     private Button messageButton;
+    private GridLayout imagesGrid;
     private String url = "http://intensif06.ensicaen.fr:8080/users";
 
 
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +61,16 @@ public class ProfileActivity extends AppCompatActivity {
         messageButton = findViewById(R.id.message_button);
         profilePicture = findViewById(R.id.user_profil_pic);
 
+        imagesGrid = findViewById(R.id.pictures);
+
+        Intent intent = getIntent();
+        Toast.makeText(getApplicationContext(), intent.getStringExtra("id"), Toast.LENGTH_LONG).show();
+        for (int i = 0; i < 5; i++) {
+            ImageView img = new ImageView(getApplicationContext());
+            img.setImageDrawable(getDrawable(R.drawable.petshot));
+            img.setLayoutParams(new Gallery.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            imagesGrid.addView(img);
+        }
         SharedPreferences sharedpreferences = getSharedPreferences(MainActivity.MyPREFERENCES, Context.MODE_PRIVATE);
 
         url = url +"/"+ sharedpreferences.getString("connectedId","");
@@ -100,7 +117,7 @@ public class ProfileActivity extends AppCompatActivity {
                         editor.putString("connectedKills", kills.toString());
 
                         editor.apply();
-                        Toast.makeText(getApplicationContext(), "Connected", Toast.LENGTH_LONG).show();
+                     //   Toast.makeText(getApplicationContext(), "Connected", Toast.LENGTH_LONG).show();
                         //startActivity(profileActivity);
 
 

@@ -14,6 +14,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -41,7 +44,7 @@ public class ProfileActivity extends AppCompatActivity {
         pseudo = findViewById(R.id.pseudo_text);
         title = findViewById(R.id.title_text);
         firstName = findViewById(R.id.name);
-        lastName = findViewById(R.id.userNameInput);
+        lastName = findViewById(R.id.lastName);
         description = findViewById(R.id.description);
         followers = findViewById(R.id.followers_nbr);
         follow = findViewById(R.id.follows_nbr);
@@ -53,9 +56,9 @@ public class ProfileActivity extends AppCompatActivity {
 
         SharedPreferences sharedpreferences = getSharedPreferences(MainActivity.MyPREFERENCES, Context.MODE_PRIVATE);
 
-        url = url +"?id="+ sharedpreferences.getString("connectedId","");
+        url = url +"/"+ sharedpreferences.getString("connectedId","");
 
-        /*
+
         //GET REQUEST
         final RequestQueue MyRequestQueue = Volley.newRequestQueue(getApplicationContext());
         // prepare the Request
@@ -67,16 +70,52 @@ public class ProfileActivity extends AppCompatActivity {
                         // display response
                         Log.d("Response", response.toString());
 
+                        /*
+                        JSONArray jsonarray = null;
+                        try {
+                            jsonarray = new JSONArray(response);
+                        } catch (JSONException e) {
+                            Log.v("PARSE ERROR","");
+                            e.printStackTrace();
+                        }
+                        */
 
+
+                        JSONObject jsonobject = null;
+                        try {
+                            jsonobject = new JSONObject(response.toString());
+
+                            Log.v("PSEUDO JSON", jsonobject.getString("pseudo"));
+                            pseudo.setText(jsonobject.getString("pseudo"));
+                            firstName.setText(jsonobject.getString("name"));
+                            lastName.setText(jsonobject.getString("lastName"));
+                            description.setText(jsonobject.getString("description"));
+                            //title.setText(jsonobject.getString("title"));
+                            followers.setText(jsonobject.getString("followers"));
+                            //follow.setText(jsonobject.getString("follow"));
+                            kills.setText(jsonobject.getString("kills"));
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        /*
                         SharedPreferences sharedpreferences = getSharedPreferences(MainActivity.MyPREFERENCES, Context.MODE_PRIVATE);
 
                         SharedPreferences.Editor editor = sharedpreferences.edit();
-                        editor.putString("connectedPseudo", connectedPseudo);
-                        editor.putString("connectedPassword", connectedPassword);
-                        editor.putString("connectedId", response.toString());
+                        editor.putString("connectedName", firstName.toString());
+                        editor.putString("connectedLastName", lastName.toString());
+                        editor.putString("connectedDescription", description.toString());
+                        editor.putString("connectedFollowers", followers.toString());
+                        editor.putString("connectedFollow", follow.toString());
+                        editor.putString("connectedKills", kills.toString());
+
                         editor.apply();
                         Toast.makeText(getApplicationContext(), "Connected", Toast.LENGTH_LONG).show();
-                        startActivity(profileActivity);
+                        //startActivity(profileActivity);
+                        */
+
 
                     }
                 },
@@ -92,6 +131,4 @@ public class ProfileActivity extends AppCompatActivity {
                 // add it to the RequestQueue
                 MyRequestQueue.add(getRequest);
             }
-            */
-    }
 }

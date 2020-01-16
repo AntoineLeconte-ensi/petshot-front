@@ -1,5 +1,6 @@
 package com.example.petshot;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -40,8 +41,9 @@ public class ProfileActivity extends AppCompatActivity {
     private ImageView userStatistics;
     private Button followButton;
     private Button messageButton;
-    private GridLayout imagesGrid;
+    private LinearLayout imagesGrid;
     private String url = "http://intensif06.ensicaen.fr:8080/users";
+    private String id;
 
 
 
@@ -50,6 +52,10 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        Intent intent = getIntent();
+        id = intent.getStringExtra("id");
+        Toast.makeText(this, id, Toast.LENGTH_LONG).show();
 
         pseudo = findViewById(R.id.pseudo_text);
         title = findViewById(R.id.title_text);
@@ -64,14 +70,14 @@ public class ProfileActivity extends AppCompatActivity {
         messageButton = findViewById(R.id.message_button);
         profilePicture = findViewById(R.id.user_profil_pic);
 
-        imagesGrid = findViewById(R.id.pictures);
+        imagesGrid = findViewById(R.id.imageLayout);
 
-        Intent intent = getIntent();
-        Toast.makeText(getApplicationContext(), intent.getStringExtra("id"), Toast.LENGTH_LONG).show();
+        Intent intent2 = getIntent();
+        Toast.makeText(getApplicationContext(), intent2.getStringExtra("id"), Toast.LENGTH_LONG).show();
         for (int i = 0; i < 5; i++) {
             ImageView img = new ImageView(getApplicationContext());
             img.setImageDrawable(getDrawable(R.drawable.petshot));
-            img.setLayoutParams(new Gallery.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            img.setLayoutParams(new Gallery.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             imagesGrid.addView(img);
         }
         SharedPreferences sharedpreferences = getSharedPreferences(MainActivity.MyPREFERENCES, Context.MODE_PRIVATE);
@@ -139,6 +145,7 @@ public class ProfileActivity extends AppCompatActivity {
                 // add it to the RequestQueue
                 MyRequestQueue.add(getRequest);
             }
+    @SuppressLint("RestrictedApi")
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //ajoute les entrées de menu_test à l'ActionBar

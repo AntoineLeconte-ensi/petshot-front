@@ -28,6 +28,7 @@ import java.util.Map;
 public class SignUpActivity extends AppCompatActivity {
 
     private Intent mainActivity;
+    private Intent flowActivity;
     private EditText email;
     private EditText firstName;
     private EditText lastName;
@@ -45,7 +46,7 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
         mainActivity = new Intent(this, MainActivity.class);
-
+        flowActivity = new Intent(this, FlowActivity.class);
         email = findViewById(R.id.emailInput);
         firstName = findViewById(R.id.firstNameInput);
         lastName = findViewById(R.id.lastNameInput);
@@ -66,42 +67,50 @@ public class SignUpActivity extends AppCompatActivity {
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final RequestQueue MyRequestQueue = Volley.newRequestQueue(getApplicationContext());
 
-                StringRequest postRequest = new StringRequest(Request.Method.POST, url,
-                        new Response.Listener<String>()
-                        {
-                            @Override
-                            public void onResponse(String response) {
-                                // response
-                                Log.d("Response", response);
+
+                if (email.getText().toString().equals("") || firstName.getText().toString().equals("") || lastName.getText().toString().equals("") || userName.getText().toString().equals("") || password.getText().toString().equals("") || confirmPassword.getText().toString().equals("") || nationality.getText().toString().equals("")) {
+                    Toast.makeText(getApplicationContext(), "You must fill in all the fields", Toast.LENGTH_LONG).show();
+                } else if (!confirmPassword.getText().toString().equals(password.getText().toString())) {
+                    password.setText("");
+                    confirmPassword.setText("");
+                    Toast.makeText(getApplicationContext(), "Invalid Password", Toast.LENGTH_LONG).show();
+                } else {
+                    final RequestQueue MyRequestQueue = Volley.newRequestQueue(getApplicationContext());
+
+                    StringRequest postRequest = new StringRequest(Request.Method.POST, url,
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    // response
+                                    Log.d("Response", response);
+                                }
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    // error
+                                    Log.d("Error.Response", error.getMessage());
+                                }
                             }
-                        },
-                        new Response.ErrorListener()
-                        {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                // error
-                                Log.d("Error.Response", error.getMessage());
-                            }
+                    ) {
+                        @Override
+                        protected Map<String, String> getParams() {
+                            Map<String, String> params = new HashMap<String, String>();
+                            params.put("name", String.valueOf(firstName.getText()));
+                            params.put("password", String.valueOf(password.getText()));
+                            params.put("lastName", String.valueOf(lastName.getText()));
+                            params.put("pseudo", String.valueOf(userName.getText()));
+                            params.put("email", String.valueOf(email.getText()));
+                            params.put("nationality", String.valueOf(nationality.getText()));
+                            return params;
                         }
-                ) {
-                    @Override
-                    protected Map<String, String> getParams()
-                    {
-                        Map<String, String>  params = new HashMap<String, String>();
-                        params.put("name", String.valueOf(firstName.getText()));
-                        params.put("password", String.valueOf(password.getText()));
-                        params.put("lastName", String.valueOf(lastName.getText()));
-                        params.put("pseudo", String.valueOf(userName.getText()));
-                        params.put("email", String.valueOf(email.getText()));
-                        params.put("nationality", String.valueOf(nationality.getText()));
-                        return params;
-                    }
-                };
+                    };
 
-                MyRequestQueue.add(postRequest);
-                Toast.makeText(getApplicationContext(), "Data Sent", Toast.LENGTH_LONG).show();
+                    MyRequestQueue.add(postRequest);
+                    startActivity(flowActivity);
+                    Toast.makeText(getApplicationContext(), "Data Sent", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }

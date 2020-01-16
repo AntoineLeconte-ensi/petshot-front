@@ -3,8 +3,11 @@ package com.example.petshot;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.MenuBuilder;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -95,5 +98,45 @@ public class SignInActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //ajoute les entrées de menu_test à l'ActionBar
+        getMenuInflater().inflate(R.menu.menu, menu);
+        if(menu instanceof MenuBuilder){
+            MenuBuilder m = (MenuBuilder) menu;
+            m.setOptionalIconsVisible(true);
+
+        }
+
+        return true;
+    }
+
+    //gère le click sur une action de l'ActionBar
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent mainActivity = new Intent(this, MainActivity.class);
+
+        switch (item.getItemId()){
+            case R.id.action_home:
+                startActivity(mainActivity);
+                return true;
+            case R.id.action_news:
+                Intent flowActivity = new Intent(this, FlowActivity.class);
+                startActivity(flowActivity);
+                return true;
+            case R.id.action_search:
+                return true;
+            case R.id.action_profil:
+                Intent profileActivity = new Intent(this, ProfileActivity.class);
+                startActivity(profileActivity);
+                return true;
+            case R.id.action_logout:
+                startActivity(mainActivity);
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

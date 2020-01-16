@@ -5,8 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.*;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -47,6 +46,8 @@ public class FlowActivity extends AppCompatActivity {
         picHunterOfTheWeek = findViewById(R.id.pic_hunter_of_the_week);
         flowLayout = findViewById(R.id.flow_layout);
 
+        ScrollView flow_scroll = findViewById(R.id.flow_scroll);
+
 
         //Button likeButton = findViewById(R.id.like_button);
         //Button commentButton = findViewById(R.id.signInButton);
@@ -56,8 +57,7 @@ public class FlowActivity extends AppCompatActivity {
         final RequestQueue MyRequestQueue = Volley.newRequestQueue(getApplicationContext());
         SharedPreferences sharedpreferences = getSharedPreferences(MainActivity.MyPREFERENCES, Context.MODE_PRIVATE);
 
-        //url = url + "/"+ sharedpreferences.getString("connectedId","");
-        url = url + "/"+ "7";
+        url = url + "/"+ sharedpreferences.getString("connectedId","");
         // prepare the Request
         StringRequest getRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>()
@@ -66,6 +66,8 @@ public class FlowActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         // display response
                         Log.d("Response", response.toString());
+
+                        LayoutInflater inflater =  (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
                         JSONObject jsonobject = null;
 
@@ -80,45 +82,46 @@ public class FlowActivity extends AppCompatActivity {
                                 linearLayout.setOrientation(LinearLayout.VERTICAL);
 
                                 LinearLayout linearLayoutTop = new LinearLayout(getApplicationContext());
-                                linearLayoutTop.setLayoutParams(new LinearLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.MATCH_PARENT));
+                                linearLayoutTop.setLayoutParams(new Gallery.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+
                                 linearLayoutTop.setOrientation(LinearLayout.HORIZONTAL);
 
                                 ImageView imageViewProfile = new ImageView(getApplicationContext());
-                                imageViewProfile.setLayoutParams(new LinearLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.MATCH_PARENT));
+                                imageViewProfile.setLayoutParams(new Gallery.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                                 imageViewProfile.setImageDrawable(getResources().getDrawable(R.drawable.newfeedimage));
 
                                 TextView textViewPseudo = new TextView(getApplicationContext());
-                                textViewPseudo.setLayoutParams(new LinearLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.MATCH_PARENT));
+                                textViewPseudo.setLayoutParams(new Gallery.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                                 textViewPseudo.setText("Pseudo");
 
                                 linearLayoutTop.addView(imageViewProfile);
                                 linearLayoutTop.addView(textViewPseudo);
 
                                 LinearLayout linearLayoutMid = new LinearLayout(getApplicationContext());
-                                linearLayoutMid.setLayoutParams(new LinearLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.MATCH_PARENT));
+                                linearLayoutMid.setLayoutParams(new Gallery.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                                 linearLayoutMid.setOrientation(LinearLayout.HORIZONTAL);
 
                                 ImageView imageViewPublication = new ImageView(getApplicationContext());
-                                imageViewPublication.setLayoutParams(new LinearLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.MATCH_PARENT));
+                                imageViewPublication.setLayoutParams(new Gallery.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                                 imageViewPublication.setImageDrawable(getResources().getDrawable(R.drawable.newfeedimage));
 
                                 linearLayoutTop.addView(linearLayoutMid);
 
                                 LinearLayout linearLayoutBottom = new LinearLayout(getApplicationContext());
-                                linearLayoutBottom.setLayoutParams(new LinearLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.MATCH_PARENT));
+                                linearLayoutBottom.setLayoutParams(new Gallery.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                                 linearLayoutBottom.setOrientation(LinearLayout.HORIZONTAL);
 
                                 Button buttonLike = new Button(getApplicationContext());
-                                buttonLike.setLayoutParams(new LinearLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.MATCH_PARENT));
+                                buttonLike.setLayoutParams(new Gallery.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                                 buttonLike.setText("Like");
 
                                 Button buttonComment = new Button(getApplicationContext());
-                                buttonComment.setLayoutParams(new LinearLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.MATCH_PARENT));
+                                buttonComment.setLayoutParams(new Gallery.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                                 buttonComment.setText("Comment");
 
 
                                 TextView textViewDescription = new TextView(getApplicationContext());
-                                textViewDescription.setLayoutParams(new LinearLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.MATCH_PARENT));
+                                textViewDescription.setLayoutParams(new Gallery.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                                 textViewDescription.setText("Description");
 
                                 linearLayoutBottom.addView(buttonLike);
@@ -126,14 +129,12 @@ public class FlowActivity extends AppCompatActivity {
                                 linearLayoutBottom.addView(textViewDescription);
 
                                 flowLayout.addView(linearLayout);
-
                             }
 
 
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
 
                     }
                 },

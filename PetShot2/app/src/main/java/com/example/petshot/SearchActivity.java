@@ -17,6 +17,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -48,11 +49,11 @@ public class SearchActivity extends AppCompatActivity {
 
                     @Override
                     public void onResponse(String response) {
-                        JSONObject jsonobject = null;
-                        String res = response.substring(1,response.length() - 1);
+                        JSONArray jsonobject = null;
+                        //String res = response.substring(1,response.length() - 1);
                         try {
-                            jsonobject = new JSONObject(res);
-                            id = jsonobject.getString("id");
+                            jsonobject = new JSONArray(response);
+                            id = jsonobject.getJSONObject(0).getString("id");
                             Toast.makeText(getApplicationContext(), id, Toast.LENGTH_LONG).show();
                         } catch (JSONException e) {
                             e.printStackTrace();

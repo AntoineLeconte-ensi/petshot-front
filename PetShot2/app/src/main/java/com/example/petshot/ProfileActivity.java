@@ -70,17 +70,6 @@ public class ProfileActivity extends AppCompatActivity {
                         // display response
                         Log.d("Response", response.toString());
 
-                        /*
-                        JSONArray jsonarray = null;
-                        try {
-                            jsonarray = new JSONArray(response);
-                        } catch (JSONException e) {
-                            Log.v("PARSE ERROR","");
-                            e.printStackTrace();
-                        }
-                        */
-
-
                         JSONObject jsonobject = null;
                         try {
                             jsonobject = new JSONObject(response.toString());
@@ -100,7 +89,6 @@ public class ProfileActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
 
-                        /*
                         SharedPreferences sharedpreferences = getSharedPreferences(MainActivity.MyPREFERENCES, Context.MODE_PRIVATE);
 
                         SharedPreferences.Editor editor = sharedpreferences.edit();
@@ -114,7 +102,7 @@ public class ProfileActivity extends AppCompatActivity {
                         editor.apply();
                         Toast.makeText(getApplicationContext(), "Connected", Toast.LENGTH_LONG).show();
                         //startActivity(profileActivity);
-                        */
+
 
 
                     }

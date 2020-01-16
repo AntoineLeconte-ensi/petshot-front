@@ -150,23 +150,10 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:id="@+id/info1"
+                                android:id="@+id/description"
                                 android:text="xxxxxxxxxxxx">
                             </TextView>
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/info2"
-                                android:text="xxxxxxxxxxxx">
-                            </TextView>
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/info3"
-                                android:text="xxxxxxxxxxxx">
-                            </TextView>
 
                         </LinearLayout>
                         <ImageView

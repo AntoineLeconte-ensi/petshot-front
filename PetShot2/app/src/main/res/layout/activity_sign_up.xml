@@ -132,7 +132,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:gravity="center|top"
-            android:text="Sign In"/>
+            android:text="Sign Up"/>
 
         <Button
             android:id="@+id/backButton"

@@ -68,52 +68,39 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View v) {
                 final RequestQueue MyRequestQueue = Volley.newRequestQueue(getApplicationContext());
 
-                Map<String, String> userData = new HashMap<>();
-                userData.put("name", String.valueOf(firstName.getText()));
-                Log.v("name", String.valueOf(firstName.getText()));
-                userData.put("password", String.valueOf(password.getText()));
-                userData.put("lastName", String.valueOf(lastName.getText()));
-                userData.put("pseudo", String.valueOf(userName.getText()));
-                userData.put("email", String.valueOf(email.getText()));
-                userData.put("nationality", String.valueOf(nationality.getText()));
-
-                JSONObject queryParams = new JSONObject(userData);
-
-                request = new JsonObjectRequest(Request.Method.GET, url, queryParams, new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Log.v("INFO", response.toString());
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.v("ERROR", "ERROR");
-                        if (error.getMessage() != null) {
-                            Log.v("ERROR", error.getMessage());
+                StringRequest postRequest = new StringRequest(Request.Method.POST, url,
+                        new Response.Listener<String>()
+                        {
+                            @Override
+                            public void onResponse(String response) {
+                                // response
+                                Log.d("Response", response);
+                            }
+                        },
+                        new Response.ErrorListener()
+                        {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                // error
+                                Log.d("Error.Response", error.getMessage());
+                            }
                         }
+                ) {
+                    @Override
+                    protected Map<String, String> getParams()
+                    {
+                        Map<String, String>  params = new HashMap<String, String>();
+                        params.put("name", String.valueOf(firstName.getText()));
+                        params.put("password", String.valueOf(password.getText()));
+                        params.put("lastName", String.valueOf(lastName.getText()));
+                        params.put("pseudo", String.valueOf(userName.getText()));
+                        params.put("email", String.valueOf(email.getText()));
+                        params.put("nationality", String.valueOf(nationality.getText()));
+                        return params;
                     }
-                }) /*{
-                    protected Map<String, String> getParams() {
-                        Log.v("test", " inside");
-                        Map<String, String> userData = new HashMap<String, String>();
-                        userData.put("name", String.valueOf(firstName.getText()));
-                        Log.v("name", String.valueOf(firstName.getText()));
-                        userData.put("password", String.valueOf(password.getText()));
-                        userData.put("lastName", String.valueOf(lastName.getText()));
-                        userData.put("pseudo", String.valueOf(userName.getText()));
-                        userData.put("email", String.valueOf(email.getText()));
-                        userData.put("nationality", String.valueOf(nationality.getText()));
-                        Log.v("nom",userData.get("name"));
-                        Log.v("nom",userData.get("pseudo"));
-                        return userData;
-                    }
-                }*/;
-                // request.set
+                };
 
-                Log.v("request", request.toString());
-
-                MyRequestQueue.add(request);
-                Log.v("test", "sent");
+                MyRequestQueue.add(postRequest);
                 Toast.makeText(getApplicationContext(), "Data Sent", Toast.LENGTH_LONG).show();
             }
         });

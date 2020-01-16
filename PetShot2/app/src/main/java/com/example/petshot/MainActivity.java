@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String MyPREFERENCES = "MyPrefs" ;
     private Intent signInActivity;
     private Intent signUpActivity;
 

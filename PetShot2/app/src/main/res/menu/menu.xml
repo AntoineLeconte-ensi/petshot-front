@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/action_home"
+          android:icon="@drawable/home"
+          android:title="@string/action_home"
+          android:showAsAction="always"/>
+    <item android:id="@+id/action_news"
+          android:icon="@drawable/news"
+          android:title="@string/action_news"
+          android:showAsAction="ifRoom"/>
+    <item android:id="@+id/action_search"
+          android:icon="@drawable/search"
+          android:title="@string/action_search"
+          android:showAsAction="ifRoom"/>
+    <item android:id="@+id/action_profil"
+          android:icon="@drawable/profil"
+          android:title="@string/action_profil"
+          android:showAsAction="ifRoom"/>
+    <item android:id="@+id/action_logout"
+          android:icon="@drawable/logout"
+          android:title="@string/action_logout"
+          android:showAsAction="ifRoom"/>
+</menu>

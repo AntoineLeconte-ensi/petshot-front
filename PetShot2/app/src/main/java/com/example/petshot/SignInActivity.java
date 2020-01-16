@@ -26,6 +26,7 @@ public class SignInActivity extends AppCompatActivity {
 
     private Intent mainActivity;
     private Intent profileActivity;
+    private Intent flowActivity;
     private EditText userName;
     private EditText password;
     private String url = "http://intensif06.ensicaen.fr:8080/users/login";
@@ -43,6 +44,7 @@ public class SignInActivity extends AppCompatActivity {
         Button signIn = findViewById(R.id.signInButton);
 
         mainActivity = new Intent(this, MainActivity.class);
+        flowActivity = new Intent(this, FlowActivity.class);
         profileActivity = new Intent(this, ProfileActivity.class);
 
         back.setOnClickListener(new View.OnClickListener() {
@@ -75,7 +77,7 @@ public class SignInActivity extends AppCompatActivity {
                                 editor.putString("connectedId", response.toString());
                                 editor.apply();
                                 Toast.makeText(getApplicationContext(), "Connected", Toast.LENGTH_LONG).show();
-                                startActivity(profileActivity);
+                                startActivity(flowActivity);
 
                             }
                         },

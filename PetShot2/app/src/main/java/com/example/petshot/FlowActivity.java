@@ -12,7 +12,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.appcompat.view.menu.MenuBuilder;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -41,6 +43,9 @@ public class FlowActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flow);
 
+        Intent intent = getIntent();
+        Toast.makeText(getApplicationContext(), intent.getStringExtra("id"), Toast.LENGTH_LONG).show();
+      
         animalOfTheWeek = findViewById(R.id.animal_of_the_week);
         hunterOfTheWeek = findViewById(R.id.hunter_of_the_week);
         picAnimalOfTheWeek = findViewById(R.id.pic_animal_of_the_week);

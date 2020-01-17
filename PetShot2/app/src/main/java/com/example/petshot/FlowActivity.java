@@ -89,7 +89,7 @@ public class FlowActivity extends AppCompatActivity {
 
                             jsonobject = new JSONObject(response.toString().substring(1,response.length()-1));
                             Log.v("LEEEEEENNGGGHHTT", String.valueOf(jsonobject.length()));
-
+/*
                             for (int i=0; i< jsonobject.length(); i++) {
 
                                 LinearLayout linearLayout = new LinearLayout(getApplicationContext());
@@ -114,7 +114,7 @@ public class FlowActivity extends AppCompatActivity {
 
                                 linearLayoutTop.addView(imageViewProfile);
                                 linearLayoutTop.addView(textViewPseudo);
-/*
+
                                 LinearLayout linearLayoutMid = new LinearLayout(getApplicationContext());
                                 linearLayoutMid.setLayoutParams(new Gallery.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                                 linearLayoutMid.setOrientation(LinearLayout.HORIZONTAL);
@@ -145,10 +145,11 @@ public class FlowActivity extends AppCompatActivity {
                                 linearLayoutBottom.addView(buttonLike);
                                 linearLayoutBottom.addView(buttonComment);
                                 linearLayoutBottom.addView(textViewDescription);
-*/
-                                flowLayout.addView(linearLayoutTop);
-                            }
 
+                                flowLayout.addView(linearLayoutTop);
+
+                            }
+*/
 
                         } catch (JSONException e) {
                             e.printStackTrace();

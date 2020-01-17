@@ -11,10 +11,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:background="@color/colorAccent"
+                      android:orientation="vertical">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="PETSHOT"
+            android:text="NEWS"
+            android:textColor="@color/colorWhite"
             android:textSize="25dp"
             android:textAlignment="center">
         </TextView>
@@ -35,18 +41,20 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/colorWhite"
                     android:text="Animal of the week">
                 </TextView>
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:id="@+id/pic_animal_of_the_week"
-                    android:src="@drawable/ic_launcher_background">
+                    android:src="@drawable/lion">
                 </ImageView>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="XXX : 21548 pts "
+                    android:text="Killed : 1300 times "
+                    android:textColor="@color/colorWhite"
                     android:id="@+id/animal_of_the_week">
                 </TextView>
 
@@ -62,35 +70,299 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/colorWhite"
                     android:text="Hunter of the week">
                 </TextView>
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:id="@+id/pic_hunter_of_the_week"
-                    android:src="@drawable/ic_launcher_background">
+                    android:src="@drawable/chasseur">
                 </ImageView>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="XXX : 21548 pts "
+                    android:textColor="@color/colorWhite"
+                    android:text="Score : 300 pts "
                     android:id="@+id/hunter_of_the_week">
                 </TextView>
             </LinearLayout>
 
         </LinearLayout>
 
-
-        <!-- Fragment Publication -->
-        <ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="wrap_content">
-            <LinearLayout
+        <Button
+                android:id="@+id/take_picture"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:id="@+id/flow_layout"
-                android:orientation="vertical">
+                android:layout_margin="10dp"
+                android:text="New Publication" />
+        </LinearLayout>
+
+        <!-- Fragment Publication -->
+        <ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/flow_scroll">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="50dp"
+                        android:layout_margin="10dp"
+                        android:id="@+id/flow_layout"
+                        android:background="@color/colorGrey"
+                        android:orientation="vertical">
+                    <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                        <ImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="10dp"
+                                android:src="@drawable/profilepicture"
+                                android:id="@+id/image_profil"
+                                android:layout_marginRight="10dp">
+                        </ImageView>
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:textSize="24dp"
+                                android:text="Djay"
+                                android:id="@+id/id_profil">
+                        </TextView>
+                    </LinearLayout>
+
+                    <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:src="@drawable/newfeedimage"
+                            android:id="@+id/image_publication"
+                            android:layout_marginRight="10dp">
+                    </ImageView>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                        <ImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:src="@drawable/ic_action_like"
+                                android:layout_margin="10dp">
+                        </ImageView>
+
+                        <ImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:src="@drawable/ic_action_comment"
+                                android:layout_margin="10dp">
+                        </ImageView>
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Like and Comment"
+                                android:id="@+id/text_publication"
+                                android:layout_margin="10dp">
+                        </TextView>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="50dp"
+                        android:layout_margin="10dp"
+                        android:background="@color/colorGrey"
+                        android:orientation="vertical">
+                    <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                        <ImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="10dp"
+                                android:src="@drawable/profilepicture2"
+                                android:layout_marginRight="10dp">
+                        </ImageView>
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:textSize="24dp"
+                                android:text="Menad">
+                        </TextView>
+                    </LinearLayout>
+
+                    <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:src="@drawable/chasseur2"
+                            android:layout_marginRight="10dp">
+                    </ImageView>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                        <ImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:src="@drawable/ic_action_like"
+                                android:layout_margin="10dp">
+                        </ImageView>
+
+                        <ImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:src="@drawable/ic_action_comment"
+                                android:layout_margin="10dp">
+                        </ImageView>
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Like and Comment"
+                                android:layout_margin="10dp">
+                        </TextView>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="50dp"
+                        android:layout_margin="10dp"
+                        android:background="@color/colorGrey"
+                        android:orientation="vertical">
+                    <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                        <ImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="10dp"
+                                android:src="@drawable/profilepicture3"
+                                android:layout_marginRight="10dp">
+                        </ImageView>
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:textSize="24dp"
+                                android:text="TheRock12">
+                        </TextView>
+                    </LinearLayout>
+
+                    <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:src="@drawable/chasseur3"
+                            android:layout_marginRight="10dp">
+                    </ImageView>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                        <ImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:src="@drawable/ic_action_like"
+                                android:layout_margin="10dp">
+                        </ImageView>
+
+                        <ImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:src="@drawable/ic_action_comment"
+                                android:layout_margin="10dp">
+                        </ImageView>
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Like and Comment"
+                                android:layout_margin="10dp">
+                        </TextView>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="50dp"
+                        android:layout_margin="10dp"
+                        android:background="@color/colorGrey"
+                        android:orientation="vertical">
+                    <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                        <ImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="10dp"
+                                android:src="@drawable/profilepicture4"
+                                android:layout_marginRight="10dp">
+                        </ImageView>
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:textSize="24dp"
+                                android:text="Seb23">
+                        </TextView>
+                    </LinearLayout>
+
+                    <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:src="@drawable/chasseur4"
+                            android:layout_marginRight="10dp">
+                    </ImageView>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                        <ImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:src="@drawable/ic_action_like"
+                                android:layout_margin="10dp">
+                        </ImageView>
+
+                        <ImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:src="@drawable/ic_action_comment"
+                                android:layout_margin="10dp">
+                        </ImageView>
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Like and Comment"
+                                android:layout_margin="10dp">
+                        </TextView>
+
+                    </LinearLayout>
+
+                </LinearLayout>
 
             </LinearLayout>
+
+
+
         </ScrollView>
     </LinearLayout>
 

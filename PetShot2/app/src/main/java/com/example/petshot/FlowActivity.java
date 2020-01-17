@@ -5,6 +5,8 @@ import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -89,6 +91,7 @@ public class FlowActivity extends AppCompatActivity {
                             Log.v("LEEEEEENNGGGHHTT", String.valueOf(jsonobject.length()));
 
                             for (int i=0; i< jsonobject.length(); i++) {
+
                                 LinearLayout linearLayout = new LinearLayout(getApplicationContext());
                                 linearLayout.setLayoutParams(new LinearLayout.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.WRAP_CONTENT));
                                 linearLayout.setOrientation(LinearLayout.VERTICAL);
@@ -99,16 +102,19 @@ public class FlowActivity extends AppCompatActivity {
                                 linearLayoutTop.setOrientation(LinearLayout.HORIZONTAL);
 
                                 ImageView imageViewProfile = new ImageView(getApplicationContext());
-                                imageViewProfile.setLayoutParams(new Gallery.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                                imageViewProfile.setLayoutParams(new Gallery.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 500));
                                 imageViewProfile.setImageDrawable(getResources().getDrawable(R.drawable.newfeedimage));
 
+
                                 TextView textViewPseudo = new TextView(getApplicationContext());
-                                textViewPseudo.setLayoutParams(new Gallery.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                                textViewPseudo.setLayoutParams(new Gallery.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
                                 textViewPseudo.setText("Pseudo");
+                                textViewPseudo.setTextSize(100.0f);
+                                textViewPseudo.setTextColor(Color.BLACK);
 
                                 linearLayoutTop.addView(imageViewProfile);
                                 linearLayoutTop.addView(textViewPseudo);
-
+/*
                                 LinearLayout linearLayoutMid = new LinearLayout(getApplicationContext());
                                 linearLayoutMid.setLayoutParams(new Gallery.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                                 linearLayoutMid.setOrientation(LinearLayout.HORIZONTAL);
@@ -139,8 +145,8 @@ public class FlowActivity extends AppCompatActivity {
                                 linearLayoutBottom.addView(buttonLike);
                                 linearLayoutBottom.addView(buttonComment);
                                 linearLayoutBottom.addView(textViewDescription);
-
-                                flowLayout.addView(linearLayout);
+*/
+                                flowLayout.addView(linearLayoutTop);
                             }
 
 

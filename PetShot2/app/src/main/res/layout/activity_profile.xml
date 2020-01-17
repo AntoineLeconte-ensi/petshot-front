@@ -27,6 +27,7 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/pseudo_text"
                         android:textAlignment="center"
+                        android:textSize="40dp"
                         android:text="Pseudo">
                     </TextView>
 
@@ -36,7 +37,7 @@
                         android:id="@+id/title_text"
                         android:textAlignment="center"
                         android:textSize="28dp"
-                        android:text="Titre">
+                        android:text="Legendary Hunter">
                     </TextView>
                 </LinearLayout>
 
@@ -46,13 +47,15 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:gravity="center">
-                    <ImageView
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:src="@drawable/profilepicture"
-                        android:id="@+id/user_profil_pic"
-                        android:layout_marginRight="50dp">
-                    </ImageView>
+
+                            <ImageView
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:src="@drawable/profilepicture"
+                                android:id="@+id/user_profil_pic"
+                                android:layout_marginRight="50dp">
+                            </ImageView>
+
 
                     <!-- Followers Layout-->
                     <LinearLayout

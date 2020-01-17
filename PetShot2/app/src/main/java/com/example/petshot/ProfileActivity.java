@@ -41,14 +41,14 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView title;
     private TextView firstName;
     private TextView lastName;
-    private TextView description;
+   // private TextView description;
     private TextView followers;
     private TextView follow;
     private TextView kills;
     private ImageView profilePicture;
-    private ImageView userStatistics;
-    private Button followButton;
-    private Button messageButton;
+    //private ImageView userStatistics;
+    //private Button followButton;
+    //private Button messageButton;
     private LinearLayout imagesGrid;
     private Button photoButton;
     private String url = "http://intensif06.ensicaen.fr:8080/users";
@@ -72,13 +72,13 @@ public class ProfileActivity extends AppCompatActivity {
         title = findViewById(R.id.title_text);
         firstName = findViewById(R.id.name);
         lastName = findViewById(R.id.lastName);
-        description = findViewById(R.id.description);
+       // description = findViewById(R.id.description);
         followers = findViewById(R.id.followers_nbr);
         follow = findViewById(R.id.follows_nbr);
         kills = findViewById(R.id.score);
-        userStatistics = findViewById(R.id.user_statistics);
-        followButton = findViewById(R.id.follow_button);
-        messageButton = findViewById(R.id.message_button);
+        //userStatistics = findViewById(R.id.user_statistics);
+        //followButton = findViewById(R.id.follow_button);
+        //messageButton = findViewById(R.id.message_button);
         profilePicture = findViewById(R.id.user_profil_pic);
         photoButton = findViewById(R.id.take_picture);
 
@@ -94,12 +94,22 @@ public class ProfileActivity extends AppCompatActivity {
 
         Intent intent2 = getIntent();
         Toast.makeText(getApplicationContext(), intent2.getStringExtra("id"), Toast.LENGTH_LONG).show();
-        for (int i = 0; i < 5; i++) {
-            ImageView img = new ImageView(getApplicationContext());
-            img.setImageDrawable(getDrawable(R.drawable.petshot));
-            img.setLayoutParams(new Gallery.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            imagesGrid.addView(img);
-        }
+
+        ImageView img1 = findViewById(R.id.pub1);
+        img1.setImageDrawable(getDrawable(R.drawable.pub5));
+
+        ImageView img2 = findViewById(R.id.pub2);
+        img2.setImageDrawable(getDrawable(R.drawable.pub2));
+
+        ImageView img3 = findViewById(R.id.pub3);
+        img3.setImageDrawable(getDrawable(R.drawable.pub1));
+
+        ImageView img4 = findViewById(R.id.pub4);
+        img4.setImageDrawable(getDrawable(R.drawable.pub3));
+
+        ImageView img5 = findViewById(R.id.pub5);
+        img5.setImageDrawable(getDrawable(R.drawable.pub4));
+
         SharedPreferences sharedpreferences = getSharedPreferences(MainActivity.MyPREFERENCES, Context.MODE_PRIVATE);
 
         url = url +"/"+ sharedpreferences.getString("connectedId","");
@@ -124,11 +134,11 @@ public class ProfileActivity extends AppCompatActivity {
                             pseudo.setText(jsonobject.getString("pseudo"));
                             firstName.setText(jsonobject.getString("name"));
                             lastName.setText(jsonobject.getString("lastName"));
-                            description.setText(jsonobject.getString("description"));
+                            //description.setText(jsonobject.getString("description"));
                             //title.setText(jsonobject.getString("title"));
-                            followers.setText(jsonobject.getString("followers"));
-                            //follow.setText(jsonobject.getString("follow"));
-                            kills.setText(jsonobject.getString("kills"));
+                           // followers.setText(jsonobject.getString("followers"));
+                            //follow.setText(json    object.getString("follow"));
+                           // kills.setText(jsonobject.getString("kills"));
 
 
                         } catch (JSONException e) {
@@ -140,7 +150,7 @@ public class ProfileActivity extends AppCompatActivity {
                         SharedPreferences.Editor editor = sharedpreferences.edit();
                         editor.putString("connectedName", firstName.toString());
                         editor.putString("connectedLastName", lastName.toString());
-                        editor.putString("connectedDescription", description.toString());
+                       // editor.putString("connectedDescription", description.toString());
                         editor.putString("connectedFollowers", followers.toString());
                         editor.putString("connectedFollow", follow.toString());
                         editor.putString("connectedKills", kills.toString());

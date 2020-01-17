@@ -4,6 +4,11 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.os.Build;
 import android.util.Log;
 import android.view.Menu;
@@ -12,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,6 +32,8 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.File;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -42,9 +50,12 @@ public class ProfileActivity extends AppCompatActivity {
     private Button followButton;
     private Button messageButton;
     private LinearLayout imagesGrid;
+    private Button photoButton;
     private String url = "http://intensif06.ensicaen.fr:8080/users";
     private String id;
 
+    private static int TAKE_PICTURE = 1;
+    private File mFichier;
 
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -69,6 +80,15 @@ public class ProfileActivity extends AppCompatActivity {
         followButton = findViewById(R.id.follow_button);
         messageButton = findViewById(R.id.message_button);
         profilePicture = findViewById(R.id.user_profil_pic);
+        photoButton = findViewById(R.id.take_picture);
+
+        photoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(takePictureIntent, TAKE_PICTURE);
+            }
+        });
 
         imagesGrid = findViewById(R.id.imageLayout);
 
@@ -128,9 +148,6 @@ public class ProfileActivity extends AppCompatActivity {
                         editor.apply();
                      //   Toast.makeText(getApplicationContext(), "Connected", Toast.LENGTH_LONG).show();
                         //startActivity(profileActivity);
-
-
-
                     }
                 },
                 new Response.ErrorListener()
@@ -157,6 +174,19 @@ public class ProfileActivity extends AppCompatActivity {
         }
 
         return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if(requestCode == TAKE_PICTURE && resultCode == RESULT_OK) {
+            Bitmap bp = (Bitmap) data.getExtras().get("data");
+            profilePicture.setImageBitmap(bp);
+            Intent newKillIntent = new Intent(this, AddKillActivity.class);
+
+            newKillIntent.putExtra("image", bp);
+
+            startActivity(newKillIntent);
+        }
     }
 
     //gère le click sur une action de l'ActionBar

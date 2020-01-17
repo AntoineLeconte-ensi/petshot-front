@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -34,6 +35,8 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+
 public class FlowActivity extends AppCompatActivity {
 
     private TextView animalOfTheWeek;
@@ -43,6 +46,9 @@ public class FlowActivity extends AppCompatActivity {
     private String url = "http://intensif06.ensicaen.fr:8080/newfeed";
     private Intent searchActivity;
     private LinearLayout flowLayout;
+    private Button photoButton;
+    private static int TAKE_PICTURE = 1;
+    private File mFichier;
 
 
     @Override
@@ -59,6 +65,8 @@ public class FlowActivity extends AppCompatActivity {
         picAnimalOfTheWeek = findViewById(R.id.pic_animal_of_the_week);
         picHunterOfTheWeek = findViewById(R.id.pic_hunter_of_the_week);
         flowLayout = findViewById(R.id.flow_layout);
+        photoButton = findViewById(R.id.take_picture);
+
 
         ScrollView flow_scroll = findViewById(R.id.flow_scroll);
 
@@ -66,6 +74,14 @@ public class FlowActivity extends AppCompatActivity {
         //Button likeButton = findViewById(R.id.like_button);
         //Button commentButton = findViewById(R.id.signInButton);
 
+
+        photoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(takePictureIntent, TAKE_PICTURE);
+            }
+        });
 
         //GET REQUEST
         final RequestQueue MyRequestQueue = Volley.newRequestQueue(getApplicationContext());

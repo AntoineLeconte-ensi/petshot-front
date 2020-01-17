@@ -137,9 +137,6 @@ public class SignUpActivity extends AppCompatActivity {
         Intent mainActivity = new Intent(this, MainActivity.class);
 
         switch (item.getItemId()){
-            case R.id.action_home:
-                startActivity(mainActivity);
-                return true;
             case R.id.action_news:
                 Intent flowActivity = new Intent(this, FlowActivity.class);
                 startActivity(flowActivity);

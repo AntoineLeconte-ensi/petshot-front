@@ -23,13 +23,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ImageView headerimage = findViewById(R.id.headerImage);
+        //ImageView headerimage = findViewById(R.id.headerImage);
         Button signInButton = findViewById(R.id.connectionButton);
         Button signUpButton = findViewById(R.id.inscriptionButton);
 
         signInActivity = new Intent(this, SignInActivity.class);
         signUpActivity = new Intent(this, SignUpActivity.class);
-        headerimage.setImageResource(R.drawable.petshot);
+        //headerimage.setImageResource(R.drawable.petshot);
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,9 +66,6 @@ public class MainActivity extends AppCompatActivity {
         Intent mainActivity = new Intent(this, MainActivity.class);
 
         switch (item.getItemId()){
-            case R.id.action_home:
-                startActivity(mainActivity);
-                return true;
             case R.id.action_news:
                 Intent flowActivity = new Intent(this, FlowActivity.class);
                 startActivity(flowActivity);

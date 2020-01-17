@@ -16,6 +16,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
                 android:orientation="vertical">
                 <!-- Title Layout !-->
                 <LinearLayout
@@ -27,6 +28,7 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/pseudo_text"
                         android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
                         android:textSize="40dp"
                         android:text="Pseudo">
                     </TextView>
@@ -36,6 +38,7 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/title_text"
                         android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
                         android:textSize="28dp"
                         android:text="Legendary Hunter">
                     </TextView>
@@ -53,7 +56,7 @@
                                 android:layout_height="150dp"
                                 android:src="@drawable/profilepicture"
                                 android:id="@+id/user_profil_pic"
-                                android:layout_marginRight="50dp">
+                                android:layout_marginRight="100dp">
                             </ImageView>
 
 
@@ -78,12 +81,14 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:id="@+id/followers_nbr"
+                                    android:textColor="@color/colorWhite"
                                     android:text="25K">
                                 </TextView>
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:textColor="@color/colorWhite"
                                     android:text="followers">
                                 </TextView>
                             </LinearLayout>
@@ -96,6 +101,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:textColor="@color/colorWhite"
                                     android:id="@+id/follows_nbr"
                                     android:text="256">
                                 </TextView>
@@ -103,6 +109,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:textColor="@color/colorWhite"
                                     android:text="follows">
                                 </TextView>
 
@@ -113,6 +120,7 @@
                             android:layout_height="wrap_content"
                             android:textSize="25dp"
                             android:layout_marginTop="10dp"
+                            android:textColor="@color/colorWhite"
                             android:id="@+id/score"
                             android:text="2565 Killed">
                         </TextView>
@@ -126,17 +134,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_marginTop="20dp">
+                    android:layout_marginTop="10dp">
                     <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginTop="20dp">
+                            android:orientation="horizontal">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/name"
                             android:textSize="20dp"
+                            android:textColor="@color/colorWhite"
                             android:layout_marginLeft="10dp"
                             android:text="Prenom">
                         </TextView>
@@ -144,6 +152,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/lastName"
+                                android:textColor="@color/colorWhite"
                                 android:textSize="20dp"
                                 android:layout_marginLeft="10dp"
                                 android:text="Nom">

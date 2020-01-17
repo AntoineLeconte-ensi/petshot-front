@@ -11,10 +11,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:background="@color/colorAccent"
+                      android:orientation="vertical">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="NEWS"
+            android:textColor="@color/colorWhite"
             android:textSize="25dp"
             android:textAlignment="center">
         </TextView>
@@ -35,6 +41,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/colorWhite"
                     android:text="Animal of the week">
                 </TextView>
                 <ImageView
@@ -47,6 +54,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Killed : 1300 times "
+                    android:textColor="@color/colorWhite"
                     android:id="@+id/animal_of_the_week">
                 </TextView>
 
@@ -62,6 +70,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/colorWhite"
                     android:text="Hunter of the week">
                 </TextView>
                 <ImageView
@@ -73,6 +82,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/colorWhite"
                     android:text="Score : 300 pts "
                     android:id="@+id/hunter_of_the_week">
                 </TextView>
@@ -86,6 +96,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="New Publication" />
+        </LinearLayout>
 
         <!-- Fragment Publication -->
         <ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/flow_scroll">
